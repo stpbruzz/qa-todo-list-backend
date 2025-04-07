@@ -1,20 +1,18 @@
 package qa.lab.todo.Entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.constraints.Size;
+import lombok.*;
 import qa.lab.todo.Enums.Priority;
 import qa.lab.todo.Enums.Status;
 
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class Task {
     @Id
@@ -22,7 +20,7 @@ public class Task {
     private String id;
 
     @Column(nullable = false)
-    @Size(min = 4)
+    @Size(min = 4, message = "длина названия >= 4 символов")
     private String name;
 
     private String description;
